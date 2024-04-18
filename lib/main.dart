@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'screens/notif_list_screen.dart';
+import 'screens/notif_login_screen.dart';
+import 'screens/notif_register_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const RoutesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class RoutesApp extends StatelessWidget{
+  const RoutesApp({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LoginScreen(),
+    return MaterialApp(
+      //home: NotifLoginScreen(),
+      initialRoute: NotifLoginScreen.id,
+      routes: {
+        NotifRegisterScreen.id:(context) => const NotifRegisterScreen(),
+        NotifLoginScreen.id:(context) => const NotifLoginScreen(),
+        NotifListScreen.id:(context) => const NotifListScreen(title: 'Notifications'),
+      },
     );
   }
 }
